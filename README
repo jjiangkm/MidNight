@@ -4,3 +4,5 @@ React-native bundle --platform android --dev false --entry-file index.android.js
 --assets-dest android/app/src/main/res/
 
 学习使用：Redux
+
+android 手机连不上adb reverse tcp:8081 tcp:8081
