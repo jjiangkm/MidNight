@@ -1,0 +1,13 @@
+/**
+ * Created by 蒋坤明 on 2017/7/19.
+ */
+const Constants = {
+    FETHISTORYSUCCESS:'FETHISTORYSUCCESS',
+    FETHISTORYFAILED:'FETHISTORYFAILED',
+    FETHISTORYDETAILSUCCESS:'FETHISTORYDETAILSUCCESS',
+    FETHISTORYDETAILFAILED:'FETHISTORYDETAILFAILED',
+    HISTORYURL:'http://106.14.120.194:8080/History/history/getAllHistory',
+    HISTORDETAILYURL:'http://106.14.120.194:8080/History/history/getHistoryById'
+};
+
+export default Constants;
