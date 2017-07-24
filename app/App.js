@@ -4,9 +4,11 @@
 import { StackNavigator } from 'react-navigation';
 import HistoryToday from './historytoday/HistoryToday'
 import HistoryTodayDetail from './historytoday/HistoryTodayDetail'
+import ImageView from './component/ImageView'
 const SimpleApp = StackNavigator({
     HistoryToday: { screen: HistoryToday },
     HistoryTodayDetail: { screen: HistoryTodayDetail },
+    ImageView: { screen: ImageView },
 },{
     initialRouteName: 'HistoryToday', // 默认显示界面
     navigationOptions: {  // 屏幕导航的默认选项, 也可以在组件内用 static navigationOptions 设置(会覆盖此处的设置)

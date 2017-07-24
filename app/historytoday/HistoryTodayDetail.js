@@ -28,6 +28,7 @@ class HistoryTodayDetail extends React.Component {
         super(props);
         this.state = props.navigation.state.params.history;
         Image.getSize( this.state.pic,(width,height)=>{this.setState({width:width,height:height})},(error)=>{console.log(error)});
+        this.getImage = this.getImage.bind(this);
     }
     componentWillMount(){
         const {dispatch} = this.props;
@@ -41,7 +42,10 @@ class HistoryTodayDetail extends React.Component {
     }
     getImage(log){
         if(log.pic!=null)
-        return ( <Image style={{width:log.width,height:log.height}} source={{uri:log.pic}}></Image>);
+        return ( <TouchableOpacity activeOpacity={0.9} onPress={()=>this.props.navigation.navigate('ImageView',{images:[{url:log.pic}]})}>
+            <Image style={{width:log.width,height:log.height}} source={{uri:log.pic}}
+                   ></Image>
+        </TouchableOpacity>);
     }
     render() {
         const {historyDetail} = this.props;
