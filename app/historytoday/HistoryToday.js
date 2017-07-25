@@ -55,7 +55,7 @@ class HistoryToday extends React.Component {
     getImage(log){
         let url = log.pic;
         if(url==''){
-            url='http://pic35.nipic.com/20131121/2531170_145358633000_2.jpg';
+            url='http://www.tucoo.com/icon/Inet_Earth/s/INET_Midnight_Earth.png';
         }
         return ( <Image style={styles.imageStyle} source={{uri:url}}></Image>);
     }
