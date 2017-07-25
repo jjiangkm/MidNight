@@ -28,7 +28,8 @@ class HistoryToday extends React.Component {
         this.state = {
             historyList:new ListView.DataSource({
                 rowHasChanged:(oldRow,newRow) => oldRow !==newRow
-            })
+            }),
+            readedItems:{}
         };
         this.renderListItem = this.renderListItem.bind(this);
         this.historyView = this.historyView.bind(this);
@@ -44,6 +45,12 @@ class HistoryToday extends React.Component {
             };
             dispatch(HistoryAction(data))
         });
+        AsyncStorage.getItem('readedItems',(error,result)=>{
+            if(result!=null){
+                let readedItems = JSON.parse(result);
+                this.setState({readedItems:readedItems})
+            }
+        });
     }
     getImage(log){
         let url = log.pic;
@@ -54,16 +61,22 @@ class HistoryToday extends React.Component {
     }
     historyView(log){
         this.props.navigation.navigate('HistoryTodayDetail',{history:log});
+        this.state.readedItems[log._id] = 1;
+        AsyncStorage.setItem('readedItems',JSON.stringify(this.state.readedItems));
+        this.setState({readedItems:this.state.readedItems})
     }
     renderListItem(log,sectionId,rowId){
         if(log.type == 0){
             return (<Text >没有数据</Text>);
         }else {
-            AsyncStorage.get(log._id).then().error();
+            let colorStyle = {color:'#333333'};
+            if(this.isReaded(log)){
+                colorStyle.color='#888888';
+            }
             return (<TouchableOpacity style={styles.itemContainer} activeOpacity={0.9} onPress={()=>this.historyView(log)}>
                 {this.getImage(log)}
                 <View style={styles.rightViewStyle}>
-                    <Text style={[styles.titleTextStyle,{fontSize:16},{color:'#333333'}]}
+                    <Text style={[styles.titleTextStyle,{fontSize:16},colorStyle]}
                           ellipsizeMode='tail'
                           numberOfLines={1}>{log.title}</Text>
                     <Text style={[styles.titleTextStyle,{color:'#999999'}]}
@@ -76,6 +89,9 @@ class HistoryToday extends React.Component {
 
             </TouchableOpacity>)
         }
+    }
+    isReaded(log){
+        return this.state.readedItems[log._id] == 1;
     }
     render() {
         const {dispatch,history,category} = this.props;
