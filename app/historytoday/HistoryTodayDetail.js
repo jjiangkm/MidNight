@@ -78,7 +78,9 @@ const styles = {
         margin:10
     },
     time:{
-        color:'#aaaaaa',
+        fontSize:16,
+        lineHeight:32,
+        color:'#999999',
         maxWidth:width-20,
         margin:10
     },

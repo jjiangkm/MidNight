@@ -59,16 +59,17 @@ class HistoryToday extends React.Component {
         if(log.type == 0){
             return (<Text >没有数据</Text>);
         }else {
+            AsyncStorage.get(log._id).then().error();
             return (<TouchableOpacity style={styles.itemContainer} activeOpacity={0.9} onPress={()=>this.historyView(log)}>
                 {this.getImage(log)}
                 <View style={styles.rightViewStyle}>
-                    <Text style={[styles.titleTextStyle,{color:'#666666',fontSize:16}]}
+                    <Text style={[styles.titleTextStyle,{fontSize:16},{color:'#333333'}]}
                           ellipsizeMode='tail'
                           numberOfLines={1}>{log.title}</Text>
-                    <Text style={[styles.titleTextStyle,{color:'#aaaaaa'}]}
+                    <Text style={[styles.titleTextStyle,{color:'#999999'}]}
                           ellipsizeMode='tail'
                           numberOfLines={2}>{log.des}</Text>
-                    <Text style={[styles.titleTextStyle,{color:'#aaaaaa'}]}
+                    <Text style={[styles.titleTextStyle,{color:'#999999'}]}
                           ellipsizeMode='tail'
                           numberOfLines={1}>{log.year}年</Text>
                 </View>
