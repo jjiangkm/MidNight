@@ -14,7 +14,7 @@ const SimpleApp = StackNavigator({
     initialRouteName: 'HistoryToday', // 默认显示界面
     navigationOptions: {  // 屏幕导航的默认选项, 也可以在组件内用 static navigationOptions 设置(会覆盖此处的设置)
         headerTintColor:'#ffffff',
-        headerStyle: { backgroundColor: '#039069'},
+        headerStyle: { backgroundColor: '#07af81'},
         gesturesEnabled:true
     },
     transitionConfig:()=>({
